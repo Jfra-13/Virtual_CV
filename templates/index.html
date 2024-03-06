@@ -1,0 +1,70 @@
+{%extends 'base.html'%}
+{%block title%} Home {%endblock%}
+{%block content%}
+
+<div class="container text-center my-4">
+    <div>
+        <img src="/static/images/profile_img.jpg" alt="img-profile" width=200 style="border-radius: 50%;">
+        <h1>{{data['first name']}} {{data['last name']}}</h1>
+        <p style="margin-bottom: 5px;">{{ data['description']['short description'] }}</p>
+        <p style="margin-top: 2px;"><i>{{ data['developer'] }}</i></p>
+
+    </div>
+    <div class="container mt-3">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-action mb-1">Email: <a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJqXxmShnxQmlHwdnkbZwfksdCxNPDpSqpMSNlczJRvLhsjsHKJZNXgVZxfNbwSVsmtvMXB" target="_blank">{{data['contact']['email']}}</a></li>
+            <li class="list-group-item list-group-item-action mb-1">Phone: {{data['contact']['phone']}}</li>
+            <li class="list-group-item list-group-item-action mb-1">Location: {{data['contact']['location']}}</li>
+        </ul>
+    </div>
+</div>
+
+<hr style="border-width: 2px;">
+
+<div class="container">
+    <div class="container shadow p-3 mb-5 bg-white rounded">
+        <h2>About me</h2>
+        <p>{{data['description']['long description']}}</p>
+    </div>
+    <div class="container shadow p-3 mb-5 bg-white rounded">
+        <h2>Languages Experience</h2>
+        <ul class="list-group">
+            {% for job in data['language experience'].keys() %}
+            <li class="list-group-item"><i>{{job}}</i>
+                <ul>
+                    <li>Description: {{data['language experience'][job]['description'] }}</li>
+                    <li>Period: {{data['language experience'][job]['time period'] }}</li>
+                </ul>
+            </li>
+
+            {%endfor%}
+        </ul>
+    </div>
+    <div class="container shadow p-3 mb-5 bg-white rounded">
+        <h2>Education</h2>
+        <div class="container">
+            <h4>Formal Education</h4>
+            <p><i>Level: Pre-Bachelor</i></p>
+            <div class="container d-flex">
+                
+                {% for info in data['education']['pre-bachelor'].keys() %}
+                <p class="mx-3"><b>{{info.capitalize()}}</b>: {{data['education']['pre-bachelor'][info]}}</p>
+                {% endfor %}
+            </div>
+    
+            <h4>Languages</h4>
+            <div class="container d-flex">
+                {% for l in data['education']['languages'].keys() %}
+                <p class="mx-3"><b>{{l}}</b>: {{data['education']['languages'][l]}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+
+
+
+
+{%endblock%}

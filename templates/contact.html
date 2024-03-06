@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+{%block title%} Contact {%endblock%}
+{%block content%}
+
+<div class="container d-flex flex-wrap">
+    <div class="container my-5 col-lg-6 col-md-12">
+        <img src="/static/images/profile_img.jpg" alt="img-profile" class="img-fluid rounded-lg" style="border-radius: 10%;">
+    </div>
+    <div class="container my-5 col-lg-6 col-md-12 d-flex flex-column justify-content-center">
+        <h1>Contact information</h1>
+        <hr style="border-width: 2px;">
+        <div class="container shadow p-3 mb-5 bg-white rounded my-3">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item list-group-item-action mb-1">Full Name: {{ data['first name'] }} {{ data['last name'] }}</li>
+                <li class="list-group-item list-group-item-action mb-1">Email: <a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJqXxmShnxQmlHwdnkbZwfksdCxNPDpSqpMSNlczJRvLhsjsHKJZNXgVZxfNbwSVsmtvMXB" target="_blank">{{ data['contact']['email'] }}</a></li>
+                <li class="list-group-item list-group-item-action mb-1">GitHub: <a href="https://github.com/Jfra-13" target="_blank">{{ data['contact']['link github'] }}</a></li>
+                <li class="list-group-item list-group-item-action mb-1">Phone: {{ data['contact']['phone'] }}</li>
+                <li class="list-group-item list-group-item-action mb-1">Location: {{ data['contact']['location'] }}</li>
+            </ul>
+        </div>
+        <a href="{{ url_for('download_cv_pdf') }}" class="btn btn-primary align-self-center">Download CV</a>
+    </div>
+    
+</div>
+
+
+{%endblock%}
